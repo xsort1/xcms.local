@@ -30,6 +30,6 @@ Route::get('admin/login', function(){
 Route::group(['middleware' => ['admin']], function () {
     Route::get('admin', [
         'as'    => 'admin-index',
-        'uses'  => 'AdminController@index'
+        'uses'  => 'Admin\AdminController@index'
     ]);
 });

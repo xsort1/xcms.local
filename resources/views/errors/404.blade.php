@@ -2201,10 +2201,6 @@
 
                 <div class="smile"></div>
 
-                {*
-                <div class="arm"></div>
-                <div class="hand"><span class="hand_parts"><span></span></span></div>
-                *}
                 <div class="jerry_lh"></div>
                 <div class="animated_lh">
                     <span class="gloves_lh"></span>

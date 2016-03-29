@@ -46,5 +46,11 @@
     },
     "config": {
         "preferred-install": "dist"
+    },
+    "autoload": {
+        "classmap": [
+            "database",
+            "app/Models"
+        ]
     }
 }
