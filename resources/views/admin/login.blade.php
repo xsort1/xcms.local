@@ -57,11 +57,12 @@
 
                                     <div class="space-6"></div>
 
-                                    <form>
+                                    <form method="POST" action="/admin/login">
+                                        {!! csrf_field() !!}
                                         <fieldset>
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="Email" />
+															<input type="text" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}"/>
 															<i class="ace-icon fa fa-user"></i>
 														</span>
                                             </label>
@@ -76,7 +77,11 @@
                                             <div class="space"></div>
 
                                             <div class="clearfix">
-                                                <button type="button" class="width-35 pull-right btn btn-sm btn-primary">
+                                                <label class="inline">
+                                                    <input type="checkbox" class="ace" name="remember" />
+                                                    <span class="lbl"> Запомнить меня</span>
+                                                </label>
+                                                <button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
                                                     <i class="ace-icon fa fa-key"></i>
                                                     <span class="bigger-110">Login</span>
                                                 </button>

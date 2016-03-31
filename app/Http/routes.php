@@ -23,9 +23,15 @@ Route::group(['middleware' => ['web']], function () {
     ]);
 });
 
-Route::get('admin/login', function(){
-    return view('admin.login');
-});
+//
+//admin panel
+//
+Route::get('admin/login', [
+    'uses' => 'Admin\AdminController@getLogin',
+    'middleware' => ['web']
+]);
+
+Route::post('admin/login', 'Admin\AdminController@postLogin');
 
 Route::group(['middleware' => ['admin']], function () {
     Route::get('admin', [
