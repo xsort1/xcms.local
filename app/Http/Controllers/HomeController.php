@@ -2,21 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
-use App\Models\News;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index()
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        $news = News::all();
-        return view('index')->with("news", $news);
+        $this->middleware('auth');
     }
 
-    public function getNews($slug){
-        $news = News::where('slug', '=', $slug)->firstOrFail();
-        return view('news.show')->with('news', $news);
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('home');
     }
 }

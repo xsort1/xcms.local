@@ -54,10 +54,9 @@
                                         <i class="ace-icon fa fa-coffee green"></i>
                                         Введите email и пароль
                                     </h4>
-
                                     <div class="space-6"></div>
 
-                                    <form method="POST" action="/admin/login">
+                                    <form method="POST" action="{{ url('/admin/login') }}">
                                         {!! csrf_field() !!}
                                         <fieldset>
                                             <label class="block clearfix">
@@ -69,7 +68,7 @@
 
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Пароль" />
+															<input type="password" name="password" class="form-control" placeholder="Пароль" />
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
                                             </label>
@@ -90,6 +89,7 @@
                                             <div class="space-4"></div>
                                         </fieldset>
                                     </form>
+                                    @include('admin.partials.errors')
                                 </div><!-- /.widget-main -->
                             </div><!-- /.widget-body -->
                         </div><!-- /.login-box -->

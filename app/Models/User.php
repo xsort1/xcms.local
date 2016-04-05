@@ -26,6 +26,8 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return $this->admin; // this looks for an admin column in your users table
+        // this looks if is admin in rights column in your users table
+        if ($this->rights == 1) return true;
+        return false;
     }
 }

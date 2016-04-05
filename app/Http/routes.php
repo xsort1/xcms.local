@@ -27,13 +27,14 @@ Route::group(['middleware' => ['web']], function () {
 //admin panel
 //
 Route::get('admin/login', [
-    'uses' => 'Admin\AdminController@getLogin',
-    'middleware' => ['web']
+    'uses'          => 'Admin\AdminController@getLogin',
+    'middleware'    => ['web']
 ]);
 
-Route::post('admin/login', 'Admin\AdminController@postLogin');
+Route::post('admin/login',["uses" => 'Admin\AdminController@postLogin',
+            'middleware'    => ['web']]);
 
-Route::group(['middleware' => ['admin']], function () {
+Route::group(['middleware' => ['admin', 'web']], function () {
     Route::get('admin', [
         'as'    => 'admin-index',
         'uses'  => 'Admin\AdminController@index'
