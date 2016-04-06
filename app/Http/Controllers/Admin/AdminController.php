@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Auth;
+use Auth;
 
 class AdminController extends Controller
 {
@@ -34,16 +34,12 @@ class AdminController extends Controller
 
         // attempt to do the login
         if (Auth::attempt($userdata)) {
-
-            // validation successful!
-            // redirect them to the secure section or whatever
-            // return Redirect::to('secure');
-            // for now we'll just echo success (even though echoing in a controller is bad)
-            echo 'SUCCESS!';
+            // authorization successful!
+            return redirect('admin');
 
         } else {
             // validation not successful, send back to form
-            redirect()->back();
+            return redirect()->back()->withErrors(trans('auth.failed'));
         }
 
     }

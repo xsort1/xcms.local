@@ -21,7 +21,11 @@ Route::group(['middleware' => ['web']], function () {
         'as'    => 'get-news',
         'uses'  => 'HomeController@getNews'
     ]);
+
+    Route::get('logout', 'Auth\AuthController@logout');
 });
+
+
 
 //
 //admin panel
@@ -34,7 +38,9 @@ Route::get('admin/login', [
 Route::post('admin/login',["uses" => 'Admin\AdminController@postLogin',
             'middleware'    => ['web']]);
 
-Route::group(['middleware' => ['admin', 'web']], function () {
+
+
+Route::group(['middleware' => ['web', 'admin']], function () {
     Route::get('admin', [
         'as'    => 'admin-index',
         'uses'  => 'Admin\AdminController@index'

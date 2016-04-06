@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Models\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use App\Http\Requests\Auth\LoginRequest;
-use Illuminate\Contracts\Auth\Guard;
+use Auth;
 
 class AuthController extends Controller
 {
@@ -72,54 +71,9 @@ class AuthController extends Controller
         ]);
     }
 
-
-    /**
-     * Handle a login request to the application.
-     *
-     * @param  App\Http\Requests\Auth\LoginRequest  $request
-     * @param  Guard  $auth
-     * @return Response
-     */
-    public function postLogin(
-        LoginRequest $request,
-        Guard $auth)
-    {
-        $logValue = $request->input('log');
-        $logAccess = filter_var($logValue, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        $throttles = in_array(
-            ThrottlesLogins::class, class_uses_recursive(get_class($this))
-        );
-        if ($throttles && $this->hasTooManyLoginAttempts($request)) {
-            return redirect('/auth/login')
-                ->with('error', trans('front/login.maxattempt'))
-                ->withInput($request->only('log'));
-        }
-        $credentials = [
-            $logAccess  => $logValue,
-            'password'  => $request->input('password')
-        ];
-        if(!$auth->validate($credentials)) {
-            if ($throttles) {
-                $this->incrementLoginAttempts($request);
-            }
-            return redirect('/auth/login')
-                ->with('error', trans('front/login.credentials'))
-                ->withInput($request->only('log'));
-        }
-
-        $user = $auth->getLastAttempted();
-        if($user->confirmed) {
-            if ($throttles) {
-                $this->clearLoginAttempts($request);
-            }
-            $auth->login($user, $request->has('memory'));
-            if($request->session()->has('user_id'))	{
-                $request->session()->forget('user_id');
-            }
-            return redirect('/');
-        }
-
-        $request->session()->put('user_id', $user->id);
-        return redirect('/auth/login')->with('error', trans('front/verify.again'));
+    public function logout(){
+        Auth::logout();
+        return redirect("/");
     }
+
 }
