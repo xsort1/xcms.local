@@ -11,6 +11,8 @@
 |
 */
 
+
+
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', [
         'as'    => 'index',
@@ -23,9 +25,8 @@ Route::group(['middleware' => ['web']], function () {
     ]);
 
     Route::get('logout', 'Auth\AuthController@logout');
+
 });
-
-
 
 //
 //admin panel
@@ -35,14 +36,22 @@ Route::get('admin/login', [
     'middleware'    => ['web']
 ]);
 
-Route::post('admin/login',["uses" => 'Admin\AdminController@postLogin',
-            'middleware'    => ['web']]);
+Route::post('admin/login',[
+            'uses'          => 'Admin\AdminController@postLogin',
+            'middleware'    => ['web']
+]);
 
 
 
-Route::group(['middleware' => ['web', 'admin']], function () {
+Route::group(['middleware' => ['web', 'admin'], 'as' => 'admin::'], function () {
     Route::get('admin', [
-        'as'    => 'admin-index',
+        'as'    => 'index',
         'uses'  => 'Admin\AdminController@index'
     ]);
 });
+
+Route::get('user/{id}', function ($id) {
+    return 'User '.$id;
+});
+//Any URL
+//Route::get('{slug}', ['as' => 'getURL', 'uses' => 'HomeController@getURL', 'middleware'    => ['web']]);
