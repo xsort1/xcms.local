@@ -37,8 +37,8 @@ Route::get('admin/login', [
 ]);
 
 Route::post('admin/login',[
-            'uses'          => 'Admin\AdminController@postLogin',
-            'middleware'    => ['web']
+    'uses'          => 'Admin\AdminController@postLogin',
+    'middleware'    => ['web']
 ]);
 
 
@@ -53,5 +53,7 @@ Route::group(['middleware' => ['web', 'admin'], 'as' => 'admin::'], function () 
 Route::get('user/{id}', function ($id) {
     return 'User '.$id;
 });
-//Any URL
-//Route::get('{slug}', ['as' => 'getURL', 'uses' => 'HomeController@getURL', 'middleware'    => ['web']]);
+
+
+//URL get content
+Route::get('{slug}', ['as' => 'getURL', 'uses' => 'ContentController@get', 'middleware'    => ['web']]);
