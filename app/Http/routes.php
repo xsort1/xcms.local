@@ -21,8 +21,10 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('news/{slug}', [
         'as'    => 'get-news',
-        'uses'  => 'HomeController@getNews'
+        'uses'  => 'NewsController@getNews'
     ]);
+
+    Route::get('tags/{tag_id}', 'NewsController@getNewsByTagID');
 
     Route::get('logout', 'Auth\AuthController@logout');
 
@@ -44,10 +46,8 @@ Route::post('admin/login',[
 
 
 Route::group(['middleware' => ['web', 'admin'], 'as' => 'admin::'], function () {
-    Route::get('admin', [
-        'as'    => 'index',
-        'uses'  => 'Admin\AdminController@index'
-    ]);
+    Route::get('admin', 'Admin\AdminController@index');
+    Route::resource('admin/content', 'Admin\ContentController');
 });
 
 Route::get('user/{id}', function ($id) {
@@ -56,4 +56,4 @@ Route::get('user/{id}', function ($id) {
 
 
 //URL get content
-Route::get('{slug}', ['as' => 'getURL', 'uses' => 'ContentController@get', 'middleware'    => ['web']]);
+Route::get('{slug}', ['as' => 'getURL', 'uses' => 'ContentController@get', 'middleware'  => ['web']]);

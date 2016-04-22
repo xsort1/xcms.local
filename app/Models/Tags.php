@@ -4,14 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class News extends Model
+class Tags extends Model
 {
     /**
      * Many to Many relation
      */
-    public function tags()
+    public function news()
     {
-        return $this->belongsToMany('App\Models\Tags');
+        return $this->belongsToMany('App\Models\News');
     }
-
 }

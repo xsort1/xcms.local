@@ -1,0 +1,1 @@
+{{ ucfirst(Date::parse($date)->format('M')) }}<h2>{{ date('d', strtotime($date)) }}</h2>{{ date('Y', strtotime($date)) }}

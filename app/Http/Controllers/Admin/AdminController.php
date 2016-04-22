@@ -11,7 +11,7 @@ use Auth;
 class AdminController extends Controller
 {
     public function index(){
-        return view('admin.index')->with("test", "test");
+        return view('admin.index');
     }
 
     public function getLogin(){

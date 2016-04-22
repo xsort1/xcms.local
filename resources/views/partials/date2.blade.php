@@ -1,0 +1,1 @@
+{{ ucfirst(Date::parse($date)->format('M')) }} {{ date('d', strtotime($date)) }}, {{ date('Y', strtotime($date)) }}

@@ -12,10 +12,10 @@ class ContentTableSeeder extends Seeder
     public function run()
     {
         DB::table('content')->insert([
-            'name_ru'       => str_random(10),
-            'description_ru'   => str_random(800),
-            'slug'          => "test",
-            'enabled'       => true
+            'name'           => str_random(10),
+            'description'    => str_random(800),
+            'slug'              => "test",
+            'enabled'           => true
         ]);
     }
 }
