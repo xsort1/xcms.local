@@ -45,8 +45,6 @@ class ContentController extends Controller
             $content = Content::find($id);
         }
 
-        //$content = Content::firstOrNew(['id' => $id]);
-
         $content->name              = $request->name;
         $content->created_at        = $request->date;
         $content->slug              = $request->slug;

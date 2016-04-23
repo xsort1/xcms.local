@@ -1,7 +1,6 @@
 @extends('admin.body')
 @section('title', $title)
 @section('centerbox')
-
     <div class="page-header">
         <h1> {{ $title }} <small><i class="ace-icon fa fa-angle-double-right"></i> {{ $desc }} </small> </h1>
     </div>
@@ -53,19 +52,18 @@
                         </td>
                         <td align="center">
                             <div class="action-buttons">
-                                <a href="javascript:void(0);" class="{{ $d->enabled ? 'visible' : 'unvisible' }}" cid="{{ $d->id }}">
-                                    @if($d->enabled)<span style="visibility:hidden">1</span>@else<span style="visibility:hidden">0</span>@endif<i class="ace-icon fa fa-eye bigger-130"></i>
+                                <a href="javascript:void(0);" class="{{ $d->enabled ? 'visible' : 'unvisible' }}" data-id="{{ $d->id }}" data-model="{{ $model }}">
+                                    <i class="ace-icon fa fa-eye bigger-130"></i>
                                 </a>
                             </div>
                         </td>
                         <td align="center">
                             <div class="action-buttons">
-                                <a href="{{ URL::to('admin/'.$model.'/'.$d->id.'/edit') }}" class="yellow">
-                                    <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                </a>
-                                <a href="javascript:void(0);" class="deleterecord red" cid="{{ $d->id }}">
-                                    <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                </a>
+                                <a href="{{ URL::to('admin/'.$model.'/'.$d->id.'/edit') }}" class="yellow"><i class="ace-icon fa fa-pencil bigger-130"></i></a>
+                                {{ Form::open(array('url' => 'admin/' . $model . '/' . $d->id, 'class' => 'pull-right')) }}
+                                {{ Form::hidden('_method', 'DELETE') }}
+                                {{ Form::button('<i class="ace-icon fa fa-trash-o bigger-130"></i>', ['type' => 'submit', 'class' => 'red deletebutton']) }}
+                                {{ Form::close() }}
                             </div>
                         </td>
                     </tr>

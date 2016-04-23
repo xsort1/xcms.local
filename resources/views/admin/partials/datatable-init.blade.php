@@ -1,14 +1,14 @@
 @section('styles')
-{{Html::style('ace/assets/css/dataTables.responsive.css')}}
+{{HTML::style('ace/assets/css/dataTables.responsive.css')}}
 @endsection
 
 @section('scripts')
 <!-- page specific plugin scripts -->
-{{Html::script('ace/assets/js/dataTables/jquery.dataTables.js')}}
-{{Html::script('ace/assets/js/dataTables/jquery.dataTables.bootstrap.js')}}
-{{Html::script('ace/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js')}}
-{{Html::script('ace/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js')}}
-{{Html::script('ace/assets/js/dataTables/dataTables.responsive.js')}}
+{{HTML::script('ace/assets/js/dataTables/jquery.dataTables.js')}}
+{{HTML::script('ace/assets/js/dataTables/jquery.dataTables.bootstrap.js')}}
+{{HTML::script('ace/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js')}}
+{{HTML::script('ace/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js')}}
+{{HTML::script('ace/assets/js/dataTables/dataTables.responsive.js')}}
 
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
@@ -258,7 +258,22 @@
             return 'left';
         }
 
-    })
+    });
+
+    $(document).ready(function(){
+        $('.visible, .unvisible').click( function(){
+            var id      =  $(this).data('id');
+            var model   =  $(this).data('model');
+            var $thisdiv = $(this);
+            $.get("{{ URL::to('admin/json/changevisibility') }}", {'id': id, 'model': model}, function(data){
+                if ($thisdiv.attr('class') == "visible"){
+                    $thisdiv.attr('class', 'unvisible');
+                } else{
+                    $thisdiv.attr('class', 'visible');
+                }
+            });
+        });
+    });
 </script>
 
 @endsection

@@ -8,53 +8,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
     <!-- bootstrap & fontawesome -->
-    {!! Html::style('ace/dist/css/bootstrap.min.css') !!}
-    {!! Html::style('ace/dist/css/font-awesome.min.css') !!}
+    {!! HTML::style('ace/dist/css/bootstrap.min.css') !!}
+    {!! HTML::style('ace/dist/css/font-awesome.min.css') !!}
 
     <!-- page specific plugin styles -->
 
     <!-- text fonts -->
-    {!! Html::style('http://fonts.googleapis.com/css?family=Open+Sans:400,300&subset=latin,cyrillic-ext') !!}
-    {!! Html::style('ace/dist/css/ace-fonts.min.css') !!}
+    {!! HTML::style('http://fonts.googleapis.com/css?family=Open+Sans:400,300&subset=latin,cyrillic-ext') !!}
+    {!! HTML::style('ace/dist/css/ace-fonts.min.css') !!}
 
     <!-- ace styles -->
-    {!! Html::style('ace/dist/css/ace.min.css', ['class'=>'ace-main-stylesheet', 'id'=>'main-ace-style']) !!}
-    {!! Html::style('ace/dist/css/ace-skins.min.css', ['class'=>'ace-main-stylesheet', 'id'=>'main-ace-style']) !!}
+    {!! HTML::style('ace/dist/css/ace.min.css', ['class'=>'ace-main-stylesheet', 'id'=>'main-ace-style']) !!}
+    {!! HTML::style('ace/dist/css/ace-skins.min.css', ['class'=>'ace-main-stylesheet', 'id'=>'main-ace-style']) !!}
 
     <!-- custom styles -->
-    {!! Html::style('ace/assets/css/xsort.css') !!}
+    {!! HTML::style('ace/assets/css/xsort.css') !!}
 
 
     @yield('styles')
 
     <!--[if lte IE 9]>
-    {!! Html::style('ace/assets/css/ace-part2.css', ['class'=>'ace-main-stylesheet']) !!}
+    {!! HTML::style('ace/assets/css/ace-part2.css', ['class'=>'ace-main-stylesheet']) !!}
     <![endif]-->
 
     <!--[if lte IE 9]>
-    {!! Html::style('ace/assets/css/ace-ie.css') !!}
+    {!! HTML::style('ace/assets/css/ace-ie.css') !!}
     <![endif]-->
 
     <!-- inline styles related to this page -->
 
     <!-- ace settings handler -->
-    {!! Html::script('ace/assets/js/ace-extra.js') !!}
+    {!! HTML::script('ace/assets/js/ace-extra.js') !!}
 
     <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
     <!--[if lte IE 8]>
-    {!! Html::script('ace/assets/js/html5shiv.js') !!}
-    {!! Html::script('ace/assets/js/respond.js') !!}
+    {!! HTML::script('ace/assets/js/html5shiv.js') !!}
+    {!! HTML::script('ace/assets/js/respond.js') !!}
     <![endif]-->
 
     <!-- basic scripts -->
 
     <!--[if !IE]> -->
-    {!! Html::script('ace/assets/js/jquery.js') !!}
+    {!! HTML::script('ace/assets/js/jquery.js') !!}
     <!-- <![endif]-->
 
     <!--[if IE]>
-    {!! Html::script('ace/assets/js/jquery1x.js') !!}
+    {!! HTML::script('ace/assets/js/jquery1x.js') !!}
     <![endif]-->
 
     <script type="text/javascript">
@@ -104,7 +104,7 @@
                 <!-- #section:basics/navbar.user_menu -->
                 <li class="light-blue">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        <img class="nav-user-photo" src="ace/assets/avatars/avatar2.png" alt="Привет!" />
+                        {!! HTML::image('ace/assets/avatars/avatar2.png', Auth::user()->name, ['class'=>'nav-user-photo']) !!}
 								<span class="user-info">
 									<small>Здравствуйте,</small>
 									{{ Auth::user()->name }}
@@ -115,7 +115,7 @@
 
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
                         <li>
-                            <a href="admin/changepassword">
+                            <a href="{{URL::to('admin/changepassword')}}">
                                 <i class="ace-icon fa fa-cog"></i>
                                 Настройки
                             </a>
@@ -307,20 +307,20 @@
     </a>
 </div><!-- /.main-container -->
 
-{!! Html::script('ace/dist/js/bootstrap.min.js') !!}
+{!! HTML::script('ace/dist/js/bootstrap.min.js') !!}
 
 <!-- ace scripts -->
-{!! Html::script('ace/assets/js/ace/elements.scroller.js') !!}
-{!! Html::script('ace/assets/js/ace/elements.typeahead.js') !!}
-{!! Html::script('ace/assets/js/ace/elements.wizard.js') !!}
-{!! Html::script('ace/assets/js/ace/elements.aside.js') !!}
-{!! Html::script('ace/assets/js/ace/ace.js') !!}
-{!! Html::script('ace/assets/js/ace/ace.ajax-content.js') !!}
-{!! Html::script('ace/assets/js/ace/ace.sidebar.js') !!}
-{!! Html::script('ace/assets/js/ace/ace.sidebar-scroll-1.js') !!}
-{!! Html::script('ace/assets/js/ace/ace.submenu-hover.js') !!}
-{!! Html::script('ace/assets/js/ace/ace.settings.js') !!}
-{!! Html::script('ace/assets/js/ace/ace.settings-skin.js') !!}
+{!! HTML::script('ace/assets/js/ace/elements.scroller.js') !!}
+{!! HTML::script('ace/assets/js/ace/elements.typeahead.js') !!}
+{!! HTML::script('ace/assets/js/ace/elements.wizard.js') !!}
+{!! HTML::script('ace/assets/js/ace/elements.aside.js') !!}
+{!! HTML::script('ace/assets/js/ace/ace.js') !!}
+{!! HTML::script('ace/assets/js/ace/ace.ajax-content.js') !!}
+{!! HTML::script('ace/assets/js/ace/ace.sidebar.js') !!}
+{!! HTML::script('ace/assets/js/ace/ace.sidebar-scroll-1.js') !!}
+{!! HTML::script('ace/assets/js/ace/ace.submenu-hover.js') !!}
+{!! HTML::script('ace/assets/js/ace/ace.settings.js') !!}
+{!! HTML::script('ace/assets/js/ace/ace.settings-skin.js') !!}
 
 @yield('scripts')
 

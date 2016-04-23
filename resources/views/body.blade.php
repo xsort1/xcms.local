@@ -10,34 +10,34 @@
     <meta name="keywords" content="Construction, Renovation" />
     <meta name="description" content="Responsive Construction Renovation Template" />
     <!--slider revolution-->
-    {!! Html::style('rs-plugin/css/settings.css',['media'=>'screen']) !!}
+    {!! HTML::style('rs-plugin/css/settings.css',['media'=>'screen']) !!}
     <!--style-->
 
-    {!! Html::script('js/jquery-1.11.3.min.js') !!}
+    {!! HTML::script('js/jquery-1.11.3.min.js') !!}
 
-    {!! Html::style('//fonts.googleapis.com/css?family=Raleway:100,300,400,500,600,700,900') !!}
-    {!! Html::style('https://fonts.googleapis.com/css?family=Lora:400,700&subset=latin,cyrillic') !!}
-    {!! Html::style('https://fonts.googleapis.com/css?family=Open+Sans:400,300,700') !!}
-    {!! Html::style('style/reset.css') !!}
-    {!! Html::style('style/bootstrap.min.css') !!}
+    {!! HTML::style('//fonts.googleapis.com/css?family=Raleway:100,300,400,500,600,700,900') !!}
+    {!! HTML::style('https://fonts.googleapis.com/css?family=Lora:400,700&subset=latin,cyrillic') !!}
+    {!! HTML::style('https://fonts.googleapis.com/css?family=Open+Sans:400,300,700') !!}
+    {!! HTML::style('style/reset.css') !!}
+    {!! HTML::style('style/bootstrap.min.css') !!}
 
-    {!! Html::script('js/bootstrap.min.js') !!}
-    {!! Html::script('js/zabuto_calendar.min.js') !!}
+    {!! HTML::script('js/bootstrap.min.js') !!}
+    {!! HTML::script('js/zabuto_calendar.min.js') !!}
 
-    {!! Html::style('style/superfish.css') !!}
-    {!! Html::style('style/jquery.qtip.css') !!}
-    {!! Html::style('style/jquery.qtip.css') !!}
-    {!! Html::style('style/style.css') !!}
-    {!! Html::style('style/animations.css') !!}
-    {!! Html::style('style/responsive.css') !!}
-    {!! Html::style('style/odometer-theme-default.css') !!}
-    {!! Html::style('fonts/streamline-small/styles.css') !!}
-    {!! Html::style('fonts/streamline-large/styles.css') !!}
+    {!! HTML::style('style/superfish.css') !!}
+    {!! HTML::style('style/jquery.qtip.css') !!}
+    {!! HTML::style('style/jquery.qtip.css') !!}
+    {!! HTML::style('style/style.css') !!}
+    {!! HTML::style('style/animations.css') !!}
+    {!! HTML::style('style/responsive.css') !!}
+    {!! HTML::style('style/odometer-theme-default.css') !!}
+    {!! HTML::style('fonts/streamline-small/styles.css') !!}
+    {!! HTML::style('fonts/streamline-large/styles.css') !!}
 
-    {!! Html::script('js/zabuto_calendar.min.js') !!}
+    {!! HTML::script('js/zabuto_calendar.min.js') !!}
 
-    {!! Html::style('fonts/template/styles.css') !!}
-    {!! Html::style('fonts/social/styles.css') !!}
+    {!! HTML::style('fonts/template/styles.css') !!}
+    {!! HTML::style('fonts/social/styles.css') !!}
 
     <script>
         $(document).ready(function(){
@@ -361,29 +361,29 @@
 </div>
 <a href="#top" class="scroll-top animated-element template-arrow-up" title="Наверх"></a>
 <!--js-->
-{!! Html::script('js/jquery-migrate-1.2.1.min.js') !!}
+{!! HTML::script('js/jquery-migrate-1.2.1.min.js') !!}
 <!--slider revolution-->
-{!! Html::script('rs-plugin/js/jquery.themepunch.tools.min.js') !!}
-{!! Html::script('rs-plugin/js/jquery.themepunch.revolution.min.js') !!}
-{!! Html::script('js/jquery.ba-bbq.min.js') !!}
-{!! Html::script('js/jquery-ui-1.11.4.custom.min.js') !!}
-{!! Html::script('js/jquery-ui-1.11.4.custom.min.js') !!}
-{!! Html::script('js/jquery.ui.touch-punch.min.js') !!}
-{!! Html::script('js/jquery.isotope.min.js') !!}
-{!! Html::script('js/jquery.easing.1.3.min.js') !!}
-{!! Html::script('js/jquery.carouFredSel-6.2.1-packed.js') !!}
-{!! Html::script('js/jquery.touchSwipe.min.js') !!}
-{!! Html::script('js/jquery.transit.min.js') !!}
-{!! Html::script('js/jquery.hint.min.js') !!}
-{!! Html::script('js/jquery.costCalculator.min.js') !!}
-{!! Html::script('js/jquery.parallax.min.js') !!}
-{!! Html::script('js/jquery.prettyPhoto.js') !!}
-{!! Html::script('js/jquery.qtip.min.js') !!}
-{!! Html::script('js/jquery.blockUI.min.js') !!}
-{!! Html::script('//maps.google.com/maps/api/js?sensor=false') !!}
+{!! HTML::script('rs-plugin/js/jquery.themepunch.tools.min.js') !!}
+{!! HTML::script('rs-plugin/js/jquery.themepunch.revolution.min.js') !!}
+{!! HTML::script('js/jquery.ba-bbq.min.js') !!}
+{!! HTML::script('js/jquery-ui-1.11.4.custom.min.js') !!}
+{!! HTML::script('js/jquery-ui-1.11.4.custom.min.js') !!}
+{!! HTML::script('js/jquery.ui.touch-punch.min.js') !!}
+{!! HTML::script('js/jquery.isotope.min.js') !!}
+{!! HTML::script('js/jquery.easing.1.3.min.js') !!}
+{!! HTML::script('js/jquery.carouFredSel-6.2.1-packed.js') !!}
+{!! HTML::script('js/jquery.touchSwipe.min.js') !!}
+{!! HTML::script('js/jquery.transit.min.js') !!}
+{!! HTML::script('js/jquery.hint.min.js') !!}
+{!! HTML::script('js/jquery.costCalculator.min.js') !!}
+{!! HTML::script('js/jquery.parallax.min.js') !!}
+{!! HTML::script('js/jquery.prettyPhoto.js') !!}
+{!! HTML::script('js/jquery.qtip.min.js') !!}
+{!! HTML::script('js/jquery.blockUI.min.js') !!}
+{!! HTML::script('//maps.google.com/maps/api/js?sensor=false') !!}
 
-{!! Html::script('js/main.js') !!}
-{!! Html::script('js/odometer.min.js') !!}
+{!! HTML::script('js/main.js') !!}
+{!! HTML::script('js/odometer.min.js') !!}
 
 </body>
 </html>

@@ -1,6 +1,7 @@
 @extends('admin.body')
 @section('title', 'Контент')
 
+
 @section('centerbox')
 <div class="page-header">
     <h1> <a href="{{ URL::to('admin/content') }}">Контент</a> <small><i class="ace-icon fa fa-angle-double-right"></i> Редактирование страницы </small> </h1>
@@ -9,9 +10,9 @@
 @include('admin.partials.errors')
 
 @if(!isset($data))
-{{ Form::open(array('url' => 'admin/content')) }}
+{{ Form::open(['url' => 'admin/content', 'class' => 'form-horizontal']) }}
 @else
-{{ Form::open(array('url' => 'admin/content/' . $data->id, 'method' => 'put')) }}
+{{ Form::open(['url' => 'admin/content/' . $data->id, 'method' => 'put', 'class' => 'form-horizontal']) }}
 @endif
     <!--<div class="form-group col-xs-12">
         <button id="submit_button1" type="submit" class="btn  btn-success" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить </button>
@@ -46,6 +47,11 @@
                     </div>
                 </div>
             </div>
+            @if (isset($data->updated_at))
+            <div class="form-group">
+                <label class="col-sm-6 control-label no-padding-right"> Изменен: {{ $data->updated_at }}</label>
+            </div>
+            @endif
         </div><!-- /.col-sm-6 -->
     </div><!-- /.row -->
     <div class="space"></div>
@@ -61,22 +67,9 @@
 
         <div class="tab-content">
             <div class="tab-pane active" id="ru">
-                {{ Form::textarea('description', old('description'), array('class' => 'ckeditor')) }}
+                {{ Form::textarea('description', (isset($data->description) ? $data->description : old('description')), array('class' => 'ckeditor')) }}
             </div>
-            <div class="tab-pane row" id="meta">
-                <div class="form-group">
-                    {{ Form::label('meta_description', 'META description:', ['class'=>'col-sm-2 control-label no-padding-right']) }}
-                    <div class="col-sm-10">
-                        {{ Form::textarea('meta_description', old('meta_description'), array('class' => 'col-xs-12')) }}
-                    </div>
-                </div>
-                <div class="form-group">
-                    {{ Form::label('meta_keywords', 'META keywords:', ['class'=>'col-sm-2 control-label no-padding-right']) }}
-                    <div class="col-sm-10">
-                        {{ Form::textarea('meta_keywords', old('meta_keywords'), array('class' => 'col-xs-12')) }}
-                    </div>
-                </div>
-            </div>
+            @include('admin.partials.meta')
         </div>
     </div>
 
@@ -87,18 +80,19 @@
 {{ Form::close() }}
 @endsection
 
-
-
 @section('styles')
-    {!! Html::style('ace/assets/css/datepicker.css') !!}
+    {!! HTML::style('ace/assets/css/datepicker.css') !!}
 @endsection
+
+
 
 @section('scripts')
 
-    {!! Html::script('ace/assets/js/date-time/bootstrap-datepicker.js') !!}
+    @include('admin.partials.ckeditor')
 
     @include('admin.partials.slug',['input_name'=>'name'])
 
+    {!! HTML::script('ace/assets/js/date-time/bootstrap-datepicker.js') !!}
     <script type="text/javascript">
         jQuery(function($) {
             var mydate = $('#mydate')[0];

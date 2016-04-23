@@ -43,12 +43,16 @@ Route::post('admin/login',[
     'middleware'    => ['web']
 ]);
 
-
-
-Route::group(['middleware' => ['web', 'admin'], 'as' => 'admin::'], function () {
+Route::group(['middleware' => ['web', 'admin']], function () {
     Route::get('admin', 'Admin\AdminController@index');
-    Route::resource('admin/content', 'Admin\ContentController');
 });
+
+Route::group(['middleware' => ['web', 'admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::controllers(['json'=>'Admin\JsonController']);
+    Route::resource('content', 'Admin\ContentController', ['as' => 'content']);
+});
+
+
 
 Route::get('user/{id}', function ($id) {
     return 'User '.$id;
