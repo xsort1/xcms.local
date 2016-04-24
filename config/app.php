@@ -158,10 +158,14 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\ViewServiceProvider::class,
 
+        /* Date Provider */
         Jenssegers\Date\DateServiceProvider::class,
 
+        /* Html & Form Providers */
         Collective\Html\HtmlServiceProvider::class,
 
+        /* Intervation Image Provider */
+        Intervention\Image\ImageServiceProviderLaravel5::class,
     ],
 
     /*
@@ -208,9 +212,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Date' => Jenssegers\Date\Date::class,
-
         'Form' => Collective\Html\FormFacade::class,
         'HTML' => Collective\Html\HtmlFacade::class,
+        'Image'=> Intervention\Image\Facades\Image::class,
     ],
 
 ];

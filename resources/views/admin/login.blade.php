@@ -9,22 +9,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
     <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" href="{{ asset('ace/css/bootstrap.css') }}" />
+    {{ HTML::style('ace/assets/css/bootstrap.css') }}
 
     <!-- text fonts -->
-    <link rel="stylesheet" href="{{ asset('ace/css/ace-fonts.css') }}" />
+    {{ HTML::style('ace/assets/css/ace-fonts.css') }}
 
     <!-- ace styles -->
-    <link rel="stylesheet" href="{{ asset('ace/css/ace.css') }}" />
-
+    {{ HTML::style('ace/assets/css/ace.css') }}
 
     <!--[if lte IE 9]>
-    <link rel="stylesheet" href="{{ asset('ace/css/ace-part2.css') }}" />
+    {{ HTML::style('ace/assets/css/ace-part2.css') }}
     <![endif]-->
-    <link rel="stylesheet" href="{{ asset('ace/css/ace-rtl.css') }}" />
+
+    {{ HTML::style('ace/assets/css/ace-rtl.css') }}
 
     <!--[if lte IE 9]>
-    <link rel="stylesheet" href="{{ asset('ace/css/ace-ie.css') }}" />
+    {{ HTML::style('ace/assets/css/ace-ie.css') }}
     <![endif]-->
 
 </head>
@@ -76,10 +76,12 @@
                                             <div class="space"></div>
 
                                             <div class="clearfix">
+                                                <!--
                                                 <label class="inline">
                                                     <input type="checkbox" class="ace" name="remember" />
                                                     <span class="lbl"> Запомнить меня</span>
                                                 </label>
+                                                -->
                                                 <button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
                                                     <i class="ace-icon fa fa-key"></i>
                                                     <span class="bigger-110">Login</span>
