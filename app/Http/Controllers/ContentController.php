@@ -9,8 +9,9 @@ use App\Models\Content;
 
 class ContentController extends Controller
 {
-    public function get($slug){
-        if ($content = Content::where('slug',$slug)->first()){
+    public function getBySlug($slug){
+        $content = Content::where('slug', $slug)->first();
+        if (!is_null($content)) {
             return view('content')->with($content);
         }else{
             abort(404);

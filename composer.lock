@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f02dd5eaf74749d5a4cc57bbf5f31fa0",
-    "content-hash": "34aa925e6187f5e71b7eeb27adbcefcd",
+    "hash": "8d1dcb856f0257c6efd3c4d75fd7ebc7",
+    "content-hash": "3a3489cdf4798a8ac6fd26c3bd072358",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -2455,6 +2455,45 @@
                 "dump"
             ],
             "time": "2016-03-10 10:34:12"
+        },
+        {
+            "name": "tsawler/laravel-filemanager",
+            "version": "0.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tsawler/laravel-filemanager.git",
+                "reference": "aa10c4c97caf00cc20e87c5867107fb9e8a7daf7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tsawler/laravel-filemanager/zipball/aa10c4c97caf00cc20e87c5867107fb9e8a7daf7",
+                "reference": "aa10c4c97caf00cc20e87c5867107fb9e8a7daf7",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=5.0.0",
+                "intervention/image": "2.*",
+                "laravelcollective/html": ">=5.1.0",
+                "php": ">=5.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tsawler\\Laravelfilemanager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Trevor Sawler",
+                    "email": "trevor.sawler@gmail.com"
+                }
+            ],
+            "description": "A file upload/editor intended for use with Laravel 5 and CKEditor",
+            "time": "2016-02-18 23:16:11"
         },
         {
             "name": "vlucas/phpdotenv",

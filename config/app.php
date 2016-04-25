@@ -166,6 +166,10 @@ return [
 
         /* Intervation Image Provider */
         Intervention\Image\ImageServiceProviderLaravel5::class,
+
+        /* Ckeditor Filemanager */
+        Tsawler\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
+
     ],
 
     /*

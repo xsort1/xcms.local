@@ -15,6 +15,7 @@ class JsonController extends Controller
         }
         return response()->json(['success'=>'true', 'data'=>$data]);
     }
+
     public function getChangevisibility(Request $request){
         $id    = $request->id;
         $model = $request->model;
