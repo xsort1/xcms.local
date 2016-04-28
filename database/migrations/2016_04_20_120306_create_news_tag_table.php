@@ -12,18 +12,18 @@ class CreateNewsTagTable extends Migration
      */
     public function up()
     {
-        Schema::create('news_tag', function(Blueprint $table) {
+        Schema::create('news_tags', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('news_id')->unsigned();
-            $table->integer('tag_id')->unsigned();
+            $table->integer('tags_id')->unsigned();
         });
-        Schema::table('news_tag', function(Blueprint $table) {
+        Schema::table('news_tags', function(Blueprint $table) {
             $table->foreign('news_id')->references('id')->on('news')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
         });
-        Schema::table('news_tag', function(Blueprint $table) {
-            $table->foreign('tag_id')->references('id')->on('tags')
+        Schema::table('news_tags', function(Blueprint $table) {
+            $table->foreign('tags_id')->references('id')->on('tags')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
         });
@@ -40,7 +40,7 @@ class CreateNewsTagTable extends Migration
         });
 
         Schema::table('post_tag', function(Blueprint $table) {
-            $table->dropForeign('news_tag_tag_id_foreign');
+            $table->dropForeign('news_tag_tags_id_foreign');
         });
         Schema::drop('news_tag');
     }

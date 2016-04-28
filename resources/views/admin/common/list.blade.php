@@ -29,9 +29,6 @@
                     @foreach($fields as $field)
                     <th align="center">{{ $field }}</th>
                     @endforeach
-                    @if ($data->count() > 0 && isset($data[0]->created_at))
-                        <th align="center">Создан</th>
-                    @endif
                     <th align="center"><i class="ace-icon fa fa-eye-slash bigger-130"></i></th>
                     <th align="center"><i class="menu-icon fa fa-cogs"></i> </th>
                 </tr>
@@ -45,17 +42,19 @@
                         <td align="right">
                             {{ $d->id }}
                         </td>
-                        <td align="left">
-                            <a title="Редактирование" href="{{ URL::to('admin/'.$model.'/'.$d->id.'/edit') }}">{{ $d->name }}</a>
-                        </td>
-                        <td align="left">
-                            /{{ $d->slug }}
-                        </td>
-                        @if (isset($d->created_at))
-                        <td align="center">
-                            {{ $d->created_at }}
-                        </td>
-                        @endif
+                        <?php $i = 0; ?>
+                        @foreach($fields as $key => $field)
+                            <?php $i++; ?>
+                            @if($i == 1)
+                                <td align="left">
+                                    <a title="Редактирование" href="{{ URL::to('admin/'.$model.'/'.$d->id.'/edit') }}">{{ $d->$key }}</a>
+                                </td>
+                                @continue
+                            @endif
+                            <td align="center">
+                                {{ $d->$key }}
+                            </td>
+                        @endforeach
                         <td align="center">
                             <div class="action-buttons">
                                 <a href="javascript:void(0);" class="{{ $d->enabled ? 'visible' : 'unvisible' }}" data-id="{{ $d->id }}" data-model="{{ $model }}">

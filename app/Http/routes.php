@@ -49,7 +49,10 @@ Route::group(['middleware' => ['web', 'admin']], function () {
 
 Route::group(['middleware' => ['web', 'admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::controllers(['json'=>'Admin\JsonController']);
+
     Route::resource('content', 'Admin\ContentController', ['as' => 'content']);
+
+    Route::resource('news', 'Admin\NewsController', ['as' => 'news']);
 });
 
 

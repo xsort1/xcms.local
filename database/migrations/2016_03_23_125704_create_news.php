@@ -16,7 +16,7 @@ class CreateNews extends Migration
 			$t->increments('id');
 			$t->string('name', 200);
 			$t->text('description');
-			$t->boolean('enabled');
+			$t->boolean('enabled')->default(true);
             $t->integer('views');
             $t->string('meta_description', 200);
             $t->string('meta_keywords', 200);

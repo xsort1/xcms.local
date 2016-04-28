@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTagTable extends Migration
+class CreatePhotosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,15 @@ class CreateTagTable extends Migration
      */
     public function up()
     {
-        Schema::create('tags', function(Blueprint $table) {
+        Schema::create('photos', function(Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
-            $table->string('name', 50)->unique();
+            $table->text('source');
+            $table->integer('table_id')->index('idx_table_id');
+            $table->string('table', 20)->index('idx_table');
+            $table->integer('sort')->index('idx_sort');
         });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -25,6 +28,6 @@ class CreateTagTable extends Migration
      */
     public function down()
     {
-        Schema::drop('tags');
+        Schema::drop('constants');
     }
 }

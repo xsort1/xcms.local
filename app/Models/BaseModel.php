@@ -41,4 +41,8 @@ class BaseModel extends Model
     {
         return Date::parse($date)->format($this->dateFormat);
     }
+
+    public function photos(){
+        return $this->hasMany('App\Models\Photos','table_id')->where('table', $this->getTable());
+    }
 }
