@@ -25,9 +25,13 @@
                     <th class="center">
                         <label class="pos-rel"><input type="checkbox" class="ace" /><span class="lbl"></span></label>
                     </th>
+                    <th align="center">ID</th>
                     @foreach($fields as $field)
                     <th align="center">{{ $field }}</th>
                     @endforeach
+                    @if ($data->count() > 0 && isset($data[0]->created_at))
+                        <th align="center">Создан</th>
+                    @endif
                     <th align="center"><i class="ace-icon fa fa-eye-slash bigger-130"></i></th>
                     <th align="center"><i class="menu-icon fa fa-cogs"></i> </th>
                 </tr>
@@ -47,9 +51,11 @@
                         <td align="left">
                             /{{ $d->slug }}
                         </td>
+                        @if (isset($d->created_at))
                         <td align="center">
                             {{ $d->created_at }}
                         </td>
+                        @endif
                         <td align="center">
                             <div class="action-buttons">
                                 <a href="javascript:void(0);" class="{{ $d->enabled ? 'visible' : 'unvisible' }}" data-id="{{ $d->id }}" data-model="{{ $model }}">
