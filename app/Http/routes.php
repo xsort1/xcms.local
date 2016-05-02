@@ -12,7 +12,11 @@
 */
 
 
-
+/*
+ *
+ * FRONTEND
+ *
+ */
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', [
         'as'    => 'index',
@@ -30,9 +34,12 @@ Route::group(['middleware' => ['web']], function () {
 
 });
 
-//
-//admin panel
-//
+
+/*
+ *
+ *  admin panel
+ *
+ */
 Route::get('admin/login', [
     'uses'          => 'Admin\AdminController@getLogin',
     'middleware'    => ['web']
@@ -53,22 +60,30 @@ Route::group(['middleware' => ['web', 'admin'], 'prefix' => 'admin', 'as' => 'ad
     Route::resource('content', 'Admin\ContentController', ['as' => 'content']);
 
     Route::resource('news', 'Admin\NewsController', ['as' => 'news']);
+
 });
 
 
+/*
+ *
+ *  photomanager
+ *
+ */
+//////TODO middleware
 
-Route::get('user/{id}', function ($id) {
-    return 'User '.$id;
-});
+    // upload
+    Route::any('photos/upload', 'Admin\PhotosController@upload');
+
+
 
 
 //URL get content
 //Route::get('{slug}', ['as' => 'getURL', 'uses' => 'ContentController@getBySlug', 'middleware'  => ['web']]);
 
-
-//Route patterns
-// Instead, you could have a handy list of patterns and reuse them everywhere:
-// Patterns
+/*
+ * Route patterns
+ *
+ */
 Route::pattern('id', '\d+');
 Route::pattern('hash', '[a-z0-9]+');
 Route::pattern('hex', '[a-f0-9]+');

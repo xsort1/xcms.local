@@ -85,7 +85,7 @@
                 {{ Form::textarea('description', (isset($data->description) ? $data->description : old('description')), array('class' => 'ckeditor', 'id' => 'editor')) }}
             </div>
             @include('admin.partials.meta')
-            @include('admin.partials.photos', ['photos' => $data->photos])
+            @include('admin.partials.photos', ['photos' => $data->photos, 'table' => 'news'])
         </div>
     </div>
 

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="{{ URL::to('/') }}" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
     <title>Админ панель - @yield('title')</title>
@@ -24,6 +25,8 @@
     <!-- custom styles -->
     {!! HTML::style('ace/assets/css/xsort.css') !!}
 
+    {!! HTML::style('ace/assets/css/toastr.min.css') !!}
+    {!! HTML::style('ace/assets/js/fancybox2/jquery.fancybox.css') !!}
 
     @yield('styles')
 
@@ -321,6 +324,9 @@
 {!! HTML::script('ace/assets/js/ace/ace.submenu-hover.js') !!}
 {!! HTML::script('ace/assets/js/ace/ace.settings.js') !!}
 {!! HTML::script('ace/assets/js/ace/ace.settings-skin.js') !!}
+{!! HTML::script('ace/assets/js/toastr.min.js') !!}
+{!! HTML::script('ace/assets/js/fancybox2/jquery.fancybox.pack.js') !!}
+
 
 @yield('scripts')
 

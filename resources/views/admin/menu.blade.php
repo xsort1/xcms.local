@@ -33,7 +33,7 @@
     </li>
 
     <li class="">
-        <a href="index.php?action=admin_news">
+        <a href="{{URL::to('admin/news')}}">
             <i class="menu-icon fa fa-newspaper-o"></i>
             <span class="menu-text"> Новости </span>
         </a>
