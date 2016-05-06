@@ -10,17 +10,10 @@
 -->
 
 <div class="tab-pane row" id="{{$div_id or 'photos'}}">
-    <form>
-        {!! csrf_field() !!}
         <div id="queue"></div>
         <input class="file_upload" name="file_upload" type="file" multiple="true"/>
-    </form>
     <ul class="ace-thumbnails clearfix photos">
-        @foreach ($photos as $photo)
 
-
-
-        @endforeach
     </ul>
 </div>
 
@@ -29,9 +22,11 @@
 
 <script>
     $(document).ready(function(){
-        var PHOTOS_DIV = "{{ $div_id or '#photos' }}";
+        var PHOTOS_DIV = "#{{ $div_id or 'photos' }}";
 
         PhotosObj = new PhotosClass(PHOTOS_DIV);
+
+        PhotosObj.GetAjaxPhotos("{{ $table }}", "{{ $table_id }}");
 
         $(function() {
             $(PHOTOS_DIV).find('.file_upload').uploadifive({
@@ -46,8 +41,7 @@
                     width: 	"{{ $width or '' }}",
                     height:	"{{ $height or '' }}",
                     twidth:	"{{ $twidth or '' }}",
-                    theight:"{{ $theight or '' }}",
-                    //'X-CSRF-Token': $(PHOTOS_DIV).find('input[name="_token"]').val(),
+                    theight:"{{ $theight or '' }}"
                 },
                 //'queueID'          : 'queue',
                 'uploadScript'     : 'photos/upload',
@@ -106,14 +100,18 @@
 
         this.GetAjaxPhotos = function(table, table_id){
             $.get(
-                    "index.php?action=admin_photo",
+                    "photos/getphotos",
                     {
-                        a:	"getphotos",
-                        t:	table,
-                        cid:table_id
+                        "table":	 table,
+                        "table_id":  table_id
                     },
-                    function (result) {
-                        $.each(result, function(i, item) {
+                    function (response) {
+                        if (response.success=="false"){
+                            toastr.error(response.data);
+                            return;
+                        }
+
+                        $.each(response.data, function(i, item) {
                             that.ShowPhoto(item);
                         });
                     },
@@ -126,7 +124,7 @@
             var $li             = $('<li sort="'+data.sort+'"></li>');
             var $img_href       = $('<a href="'+ data.path + data.filename + '" title="' + data.filename + '"></a>').fancybox();
             var $img            = $('<img width="150" height="150" src="'+ data.path + 'thumbs/' + data.filename + '" />');
-            var $input          = $('<input type="hidden" name="photo_id[]" value ="' + data.id + '" />');
+            var $input          = $('<input type="hidden" name="photos[]" value ="' + data.id + '" />');
             var $tools          = $('<div class="tools"></div>');
             var $double_left    = $('<a href="javascript:void(0);" title="В начало" class="double_left"><i class="ace-icon fa fa-angle-double-left"></i></a>')
                                     .click(function(){
@@ -162,6 +160,8 @@
                                         $next.before($last);
                                     });
 
+            //var $rotate          = $('<a href="javascript:void();" title="Повернуть" class="rotate"><i class="ace-icon fa fa-repeat fa-1"></i></a>');
+
             $(this.PHOTOS_DIV).find('ul.photos')
                     .append($li.append($img_href.append($img))
                             .append($input)
@@ -170,7 +170,10 @@
                                     .append($left)
                                     .append($delete)
                                     .append($right)
-                                    .append($double_right)));
+                                    .append($double_right)
+                                    //.append($rotate)
+                            )
+                    );
 
         }
     };

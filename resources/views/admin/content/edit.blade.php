@@ -67,7 +67,7 @@
 
         <div class="tab-content">
             <div class="tab-pane active" id="ru">
-                {{ Form::textarea('description', (isset($data->description) ? $data->description : old('description')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+                {{ Form::textarea('description', (isset($data->description) ? $data->description : old('description')), zz('class' => 'ckeditor', 'id' => 'editor')) }}
             </div>
             @include('admin.partials.meta')
         </div>

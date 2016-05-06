@@ -69,13 +69,11 @@ Route::group(['middleware' => ['web', 'admin'], 'prefix' => 'admin', 'as' => 'ad
  *  photomanager
  *
  */
-//////TODO middleware
-
+Route::group(['middleware' => ['web', 'admin'], 'prefix' => 'photos'], function () {
     // upload
-    Route::any('photos/upload', 'Admin\PhotosController@upload');
-
-
-
+    Route::post('upload',   'Admin\PhotosController@upload');
+    Route::get('getphotos', 'Admin\PhotosController@getJSONPhotos');
+});
 
 //URL get content
 //Route::get('{slug}', ['as' => 'getURL', 'uses' => 'ContentController@getBySlug', 'middleware'  => ['web']]);

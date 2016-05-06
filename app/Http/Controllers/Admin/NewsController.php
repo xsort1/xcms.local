@@ -19,7 +19,8 @@ class NewsController extends Controller
     }
 
     public function create(){
-        return view('admin.news.edit');
+        $tags = Tags::all();
+        return view('admin.news.edit')->with(compact('tags'));
     }
 
     public function store(Request $request)
@@ -35,12 +36,17 @@ class NewsController extends Controller
     }
 
     private function save(Request $request, $id){
+        //photos
+        dd($request->photos);
+
         // store
         if (!isset($id)) {
             $data = new News();
         }else{
             $data = News::find($id);
         }
+
+
 
         $data->name              = $request->name;
         $data->created_at        = $request->date;
@@ -49,6 +55,8 @@ class NewsController extends Controller
         $data->meta_description  = $request->meta_description;
         $data->meta_keywords     = $request->meta_keywords;
         $data->save();
+
+
 
         // redirect
         Session::flash('message', trans('common.saved'));
