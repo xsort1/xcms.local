@@ -1,0 +1,1 @@
+<div class="col-md-3 hidden-xs hidden-sm ">    <div onclick="location.href='http://google.ru';" class="banner banner-right first" style="background:url(img/public/first-pub.png)"></div>    <div onclick="location.href='http://google.ru';" class="banner banner-right second" style="background:url(img/public/second-pub.png)"></div></div>
