@@ -101,7 +101,7 @@
         </div>
     </div>
     <div class="col-lg-12 inst-description margin-t-50 text-center">
-        <h2 class="inst-title text-center rowed">{{$product->name}}</h2>
+        <h2 class="inst-title text-center rowed">{{$data->name}}</h2>
         <div class="col-lg-8 col-lg-offset-2 margin-t-25 text-center inst-description-text">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, quam amet odit eum doloremque cupiditate, accusamus repellendus expedita doloribus ex! Aut veniam inventore quia optio, consequatur rem dicta dolorum officiis autem at asperiores minima obcaecati qui perspiciatis, quisquam neque alias porro iure a! Qui architecto eos adipisci ipsam eligendi consectetur? Laborum, voluptatibus praesentium inventore animi consequuntur consequatur reprehenderit assumenda, similique impedit dolorem omnis eveniet totam cum architecto illo nemo officia. Dicta ex est praesentium, assumenda et maxime, reiciendis enim sapiente vel distinctio itaque, labore repudiandae voluptatum dolorem quis rem laboriosam amet pariatur temporibus fugiat. Esse ea omnis, at autem aut.
         </div>
