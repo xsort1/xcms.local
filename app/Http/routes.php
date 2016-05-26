@@ -18,6 +18,9 @@
  *
  */
 Route::group(['middleware' => ['web']], function () {
+	
+	Route::get('logout', 'Auth\AuthController@logout');
+	
     Route::get('/', [
         'as'    => 'index',
         'uses'  => 'HomeController@index'
@@ -27,12 +30,25 @@ Route::group(['middleware' => ['web']], function () {
         'as'    => 'get-news',
         'uses'  => 'NewsController@getNews'
     ]);
-
-    Route::get('tags/{tag_id}', 'NewsController@getNewsByTagID');
-
-    Route::get('logout', 'Auth\AuthController@logout');
+    
+    Route::get('news', 'NewsController@getNewsList');
+    
+    Route::get('categories', 'CategoriesController@getCategoriesList');
+    
+    Route::get('{slug}/photo', 'ProductsController@getPhotos');
+    
+    Route::get('{slug}/video', 'ProductsController@getVideos');
+    
+    Route::get('{slug}/promo', 'NewsController@getPromo');
+    
+    Route::get('{slug}/menu', 'ProductsController@getMenu');
+    
+    Route::get('{slug}/plan', 'ProductsController@getPlan');
+    
+    Route::get('{slug}', 'CommonController@getSlug');
 
 });
+
 
 
 /*

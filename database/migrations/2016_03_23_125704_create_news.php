@@ -26,7 +26,7 @@ class CreateNews extends Migration
 			$t->boolean('enabled')->default(true);
             $t->integer('views');
             $t->integer('sort');
-            $t->string('slug', 200);
+            $t->string('slug', 200)->index('idx_slug');
 			$t->timestamps();
 		});
     }
