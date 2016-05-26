@@ -36,7 +36,7 @@
                 <div class="col-sm-9">
                     <select multiple data-placeholder="выберите категорию" id="chosencat" name="chosencat[]" class="tag-input-style col-xs-12">
                         @foreach($tags as $tag)
-                        <option value="{{$tag['name']}}" @if (isset($data) && (in_array($tag->id, $data->getTagsIdsArray()))) selected="selected" @endif>
+                        <option value="{{$tag['id']}}" @if (isset($data) && (in_array($tag->id, $data->getTagsIdsArray()))) selected="selected" @endif>
                             {{ $tag->name }}
                         </option>
                         @endforeach

@@ -15,4 +15,9 @@ class Helper
     public static function parseDate($string){
         DateTime::createFromFormat('d-m-Y', $string);
     }
+
+    public static function getExtention($string){
+        $array = explode('.', $string);
+        return end($array);
+    }
 }

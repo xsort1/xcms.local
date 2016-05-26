@@ -71,8 +71,9 @@ Route::group(['middleware' => ['web', 'admin'], 'prefix' => 'admin', 'as' => 'ad
  */
 Route::group(['middleware' => ['web', 'admin'], 'prefix' => 'photos'], function () {
     // upload
-    Route::post('upload',   'Admin\PhotosController@upload');
-    Route::get('getphotos', 'Admin\PhotosController@getJSONPhotos');
+    Route::post('upload',    'Admin\PhotosController@upload');
+    Route::get('getphotos',  'Admin\PhotosController@getJSONPhotos');
+    Route::get('changesort', 'Admin\PhotosController@changesort');
 });
 
 //URL get content

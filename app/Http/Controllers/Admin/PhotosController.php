@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Helper;
 use App\Models\Content;
 use App\Models\Photos;
 use Illuminate\Http\Request;
@@ -52,12 +53,8 @@ class PhotosController extends Controller
         $file       = Input::file('Filedata');
         $width      = Input::get('width');
         $height     = Input::get('height');
-        $twidth     = Input::get('twidth');
-        $theight    = Input::get('theight');
         if (is_numeric($width))     $this->width        = $width;
         if (is_numeric($height))    $this->height       = $height;
-        if (is_numeric($twidth))    $this->thumb_width  = $twidth;
-        if (is_numeric($theight))   $this->thumb_height = $theight;
 
         $extension = $file->getClientOriginalExtension();
         $new_filename = uniqid() . "." . $extension;
@@ -109,11 +106,68 @@ class PhotosController extends Controller
         if ($table_id == 0){
             $query->where('token', $token);
         }
-        $rows   = $query->get();
+        $rows   = $query->orderBy('sort')->get();
         $photos = array();
         foreach($rows as $r){
             $photos[] = ['filename' => $r['source'], 'path' => $this->images_url, 'id' => $r['id'], 'sort' => $r['sort']];
         }
         return response()->json(['success' => 'true', 'data' => $photos]);
+    }
+
+    public function changesort(){
+        $a_id   = Input::get('a_id');
+        $b_id   = Input::get('b_id');
+        $asort = Input::get('asort');
+        $bsort = Input::get('bsort');
+
+        $a_photo = Photos::find($a_id);
+        $a_photo->sort = $bsort;
+        $a_photo->save();
+
+        $b_photo = Photos::find($b_id);
+        $b_photo->sort = $asort;
+        $b_photo->save();
+
+        return response()->json(['success' => 'true']);
+    }
+
+    /**
+     * @param Request $request
+     * @param $id
+     */
+    public function UpdatePhotos(Request $request, $id){
+        if (is_null($request->photos)) return;
+        if (!is_numeric($id)) return;
+
+        $photos = Photos::whereIn('id', $request->photos)->get();
+
+        foreach($photos as $photo){
+            if ($photo->table_id == 0){
+                $photo->table_id = $id;
+                $photo->token = "";
+                if ($request->slug){
+                    //new photo name
+                    $old_name = $photo->source;
+                    $new_name = $request->slug . "_" . $photo->id . "." . Helper::getExtention($photo->source);
+                    $photo->source = $new_name;
+
+                    //rename main image
+                    $oldfile = $this->files_location . $old_name;
+                    $newfile = $this->files_location . $new_name;
+                    File::move($oldfile, $newfile);
+
+                    //reaname thumbs
+                    $all_thumbs = Config::get('photos.thumbs');
+                    foreach($all_thumbs as $thumb) {
+                        $thumbPath = $this->files_location . $thumb['path'] . "/";
+                        $oldfile = $thumbPath . $old_name;
+                        $newfile = $thumbPath . $new_name;
+                        File::move($oldfile, $newfile);
+                    }
+
+                }
+                $photo->save();
+            }
+        }
     }
 }
