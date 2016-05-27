@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Models\News;
+use App\Models\Categories;
 class HomeController extends Controller
 {
     /**
@@ -26,7 +27,7 @@ class HomeController extends Controller
     {
 //         $news  = News::orderBy('created_at', 'desc')->paginate(5);
 //         return view('news.list')->with('news', $news);
-
-			return view('index');
+			$categories = Categories::with('children')->get();
+			return view('index')->with('data', $categories);
     }
 }

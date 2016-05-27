@@ -3,22 +3,26 @@
 <div class="container-fluid main-menu">
     <div class="row">
         <div class="col-md-9 col-sm-12">
-
+        	@foreach ($data as $category)
+        	@if ($category->children->count())
             <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="row">
-                    <a href="allclubs.php">
+                    <a href="{{$category->slug}}">
                         <div class="menu block-1">
                             <div class="main-menu-image" style="background: url(images/main-menu/weeding.png);"></div>
                             <div class="main-menu-filter"></div>
-                            <h3 class="main-menu-title"><span>Свадьбы</span></h3>
+                            <h3 class="main-menu-title"><span>{{$category->name}}</span></h3>
                             <div class="divider-title"></div>
-                            <span class="main-menu-descripton">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum iste architecto, nam fugit quam vero eos, commodi eveniet deleniti ut iusto ab recusandae, molestiae quasi?</span>
-                            <a href="allclubs.php" class="main-menu-button"><span>Посмотреть все</span></a>
+                            <span class="main-menu-descripton">{{$category->description_short}}</span>
+                            <a href="{{$category->slug}}" class="main-menu-button"><span>Посмотреть все</span></a>
                         </div>
                     </a>
                 </div>
             </div>
+            @endif
+            @endforeach
 
+<!--
             <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="row">
                     <a href="allclubs.php">
@@ -136,6 +140,7 @@
                     </a>
                 </div>
             </div>
+            -->
         </div>
         @include('partials.right-banners')
     </div>
