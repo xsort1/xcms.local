@@ -12,6 +12,7 @@ use App\Models\Categories;
 
 use App\Models\Products;
 
+
 class CommonController extends Controller
 {
     public function getSlug($slug)
@@ -20,7 +21,14 @@ class CommonController extends Controller
 	    if (isset($content)) return view('content.content')->with('data', $content);
 	    
 	    $category = Categories::where('slug',$slug)->where('enabled',true)->first();
-	    if (isset($category)) return view('products.categories')->with('data', $category);
+	    if (isset($category)) {
+		    
+		    if ($category->children->count() > 0) {
+			    return view('products.categories')->with('data', $category);
+			} else { 
+				return view('products.products');
+			}
+	    }
 	    
 	    $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
 		return view('products.product')->with('data', $product);

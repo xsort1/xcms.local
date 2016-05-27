@@ -6,7 +6,7 @@
     <!--meta-->
     <meta charset="UTF-8" />
     <meta name="keywords" content="Construction, Renovation" />
-    <meta name="description" content="Responsive Construction Renovation Template" />
+    <meta name="description" content="@yield('meta_description', trans('common.meta_description'));" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
 	<link rel="stylesheet" href="css/bootstrap.min.css">

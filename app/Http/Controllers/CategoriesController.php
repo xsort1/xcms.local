@@ -6,11 +6,15 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Models\Categories;
+
 class CategoriesController extends Controller
 {
 
     public function getCategoriesList()
     {
+	    
+	    $categories = Categories::find(7); 
 		return view('products.categories');
     }
 }

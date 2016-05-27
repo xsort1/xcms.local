@@ -31,6 +31,15 @@ class BaseModel extends Model
             $this->attributes['slug'] = str_slug($value);
         }
     }
+    
+    public function getSlugAttribute($value) {
+        
+        $lang = "";
+        if ($lang == "ro") return "ro/".$value;
+        if ($lang == "en") return "en/".$value;
+        return $value;
+        
+    }
 
     public function setUpdatedAtAttribute($value)
     {
@@ -44,5 +53,9 @@ class BaseModel extends Model
 
     public function photos(){
         return $this->hasMany('App\Models\Photos','table_id')->where('table', $this->getTable());
+    }
+    
+    public function meta(){
+        return $this->hasOne('App\Models\Meta','table_id')->where('table', $this->getTable());
     }
 }
