@@ -3,10 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Photos extends Model
 {
     public $timestamps  =   false;
+
+    public $timestamps = false;
 
     public function getThumbs(){
         /*

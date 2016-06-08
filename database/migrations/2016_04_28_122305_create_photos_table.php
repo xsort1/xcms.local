@@ -18,6 +18,7 @@ class CreatePhotosTable extends Migration
             $table->integer('table_id')->index('idx_table_id');
             $table->string('table', 20)->index('idx_table');
             $table->integer('sort')->index('idx_sort');
+            $table->string('token', 100);
         });
     }
 

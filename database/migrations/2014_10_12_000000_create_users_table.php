@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('rights');
             $table->rememberToken();
             $table->timestamps();
+            $table->tinyInteger('rights');
         });
     }
 
