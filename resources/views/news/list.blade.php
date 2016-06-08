@@ -17,13 +17,15 @@
             <!--<li class="template-bubble"><a href="post.html#comments-list" title="5 comments">5</a></li>-->
         </ul>
         <div class="post-content">
+            @if ($n->getMainPhoto() !== null)
             <a href="{!!  URL::to('news/' . $n->slug) !!}" title="{{ $n->name }}" class="post-image">
-                <img src="{!!  URL::to('images/slider/image_01.jpg') !!}" width="100%" alt="{{ $n->name }}" />
+                <img src="{!!  URL::to('uploaded/'.$n->getMainPhoto()) !!}" width="100%" alt="{{ $n->name }}" />
             </a>
+            @endif
             <ul class="post-content-details clearfix post-info">
                 @foreach($n->tags as $tag)
                     <li>
-                        <a href="{!!  URL::to('tags/' . $tag->id) !!}" title="{{ $tag->name }}">{{ $tag->name }}</a>@if ($tag != end($n->tags)), @endif
+                        <a href="{!!  URL::to('tags/' . $tag->id) !!}" title="{{ $tag->name }}">{{ $tag->name }}</a>
                     </li>
                 @endforeach
             </ul>

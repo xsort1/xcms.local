@@ -9,8 +9,6 @@ class Photos extends Model
 {
     public $timestamps  =   false;
 
-    public $timestamps = false;
-
     public function getThumbs(){
         /*
         $photos = $this->photos();

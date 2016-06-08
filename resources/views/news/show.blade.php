@@ -10,12 +10,17 @@
                     <!--<li class="template-bubble"><a href="#comments-list" class="scroll-to-comments" title="5 Comments">5</a></li>-->
                 </ul>
                 <div class="post-content">
-                    <a href="#" class="post-image">
-                        <img src="http://iriam-klin.ru/images/imgall/geodesia.jpg" width="100%" alt="">
-                    </a>
+                    @if ($data->getMainPhoto() !== null)
+
+                        <img src="{!!  URL::to('uploaded/'.$data->getMainPhoto()) !!}" width="100%" alt="{{ $data->name }}">
+
+                    @endif
                     <ul class="post-content-details clearfix post-info">
-                        <!--<li>От <a href="#" title="Kevin Smith">Кевин Смит</a></li>-->
-                        <li><a href="#" title="Build">Нивелир</a>, <a href="#" title="Repairs">Геодзедия</a></li>
+                        @foreach($data->tags as $tag)
+                            <li>
+                                <a href="{!!  URL::to('tags/' . $tag->id) !!}" title="{{ $tag->name }}">{{ $tag->name }}</a>
+                            </li>
+                        @endforeach
                     </ul>
                     <h2 class="box-header align-left" style="text-transform: uppercase;">{{ $data->name }}</h2>
                     <p>{!! $data->description !!}</p>
