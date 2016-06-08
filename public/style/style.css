@@ -1780,12 +1780,14 @@ span.odometer.number:after
 	color: #999;
 }
 .pagination li a:hover:before,
-.pagination li a.selected:before
+.pagination li span.active:before
 {
 	color: #FFF;
 }
 .pagination li.left a,
-.pagination li.right a
+.pagination li.right a,
+.pagination li.left span,
+.pagination li.right span
 {
 	  padding: 9px 0;
 }
@@ -1798,7 +1800,8 @@ span.odometer.number:after
     -ms-filter: fliph;
     filter: fliph;
 }
-.pagination li a
+.pagination li a,
+.pagination li span
 {
 	display: block;
     color: #999;
@@ -1809,7 +1812,7 @@ span.odometer.number:after
 	text-align: center;
 }
 .pagination li a:hover,
-.pagination li.selected a
+.pagination li.active span
 {
 	color: #FFF;
 	background-color: #41AB3B;
@@ -2944,4 +2947,8 @@ ul{
 
 .call-to-action{
 	padding: 0 !important;
+}
+
+.uppercase{
+	text-transform: uppercase;
 }

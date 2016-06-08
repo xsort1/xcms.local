@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use App\Models\Tags;
-use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
@@ -16,13 +15,9 @@ class NewsController extends Controller
         return view('news.show')->with('data', $news);
     }
 
-    public function getNewsByTagID($tag_id){
-        $tag = Tags::find($tag_id);
-        if (!$tag) abort(404);
-        $news = $tag->news;
-
-        dd($news);
-
-        return view('news.list')->with('news', $news);
+    public function getNewsByTagID($id){
+        $tag    = Tags::findOrFail($id);
+        $news   = $tag->news()->paginate(config('site.news_per_page'));
+        return view('news.list')->with(compact('news', 'tag'));
     }
 }

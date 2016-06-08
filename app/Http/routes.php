@@ -28,7 +28,7 @@ Route::group(['middleware' => ['web']], function () {
         'uses'  => 'NewsController@getNews'
     ]);
 
-    Route::get('tags/{tag_id}', 'NewsController@getNewsByTagID');
+    Route::get('tags/{id}', 'NewsController@getNewsByTagID');
 
     Route::get('logout', 'Auth\AuthController@logout');
 
@@ -71,8 +71,11 @@ Route::group(['middleware' => ['web', 'admin'], 'prefix' => 'admin', 'as' => 'ad
  */
 //////TODO middleware
 
-    // upload
-    Route::any('photos/upload', 'Admin\PhotosController@upload');
+// upload
+Route::any('photos/upload', 'Admin\PhotosController@upload');
+Route::get('photos/getphotos', 'Admin\PhotosController@getJSONPhotos');
+Route::get('photos/changesort', 'Admin\PhotosController@changesort');
+Route::get('photos/delete', 'Admin\PhotosController@delete');
 
 
 

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Content;
 use App\Models\News;
 use App\Models\Tags;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -48,7 +48,15 @@ class NewsController extends Controller
         $data->description       = $request->description;
         $data->meta_description  = $request->meta_description;
         $data->meta_keywords     = $request->meta_keywords;
+
+        //tags
+        if ($request->chosencat) {
+            $data->tags()->sync($request->chosencat);
+        }
+
         $data->save();
+
+        $this->UpdatePhotos($request, $data->id);
 
         // redirect
         Session::flash('message', trans('common.saved'));
@@ -105,7 +113,7 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        Content::destroy($id);
+        News::destroy($id);
         Session::flash('message', trans('common.deleted'));
         return back();
     }

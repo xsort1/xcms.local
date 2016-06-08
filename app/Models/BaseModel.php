@@ -32,11 +32,6 @@ class BaseModel extends Model
         }
     }
 
-    public function setUpdatedAtAttribute($value)
-    {
-        $this->attributes['updated_at'] = Carbon::now();
-    }
-
     public function getUpdatedAtAttribute($date)
     {
         return Date::parse($date)->format($this->dateFormat);

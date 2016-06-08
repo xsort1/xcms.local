@@ -118,15 +118,6 @@
 
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
                         <li>
-                            <a href="{{URL::to('admin/changepassword')}}">
-                                <i class="ace-icon fa fa-cog"></i>
-                                Настройки
-                            </a>
-                        </li>
-
-                        <li class="divider"></li>
-
-                        <li>
                             <a href="logout">
                                 <i class="ace-icon fa fa-power-off"></i>
                                 Выход

@@ -322,7 +322,7 @@
                         <h6 class="box-header page-margin-top">Теги</h6>
                         <ul class="taxonomies margin-top-30 clearfix">
                             @foreach($tags as $tag)
-                                <li><a href="{!!  URL::to('tags/' . $tag->id) !!}" title="{{$tag->tag}}">{{$tag->tag}}</a></li>
+                                <li><a href="{!!  URL::to('tags/' . $tag->id) !!}" title="{{$tag->name}}">{{$tag->name}}</a></li>
                             @endforeach
                         </ul>
                     </div>
